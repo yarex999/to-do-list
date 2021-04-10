@@ -1,0 +1,280 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #17171a;
+}
+
+
+/* * {
+    outline: 1px solid black;
+} */
+
+
+/* wrapper */
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+
+/* chart */
+
+.chart {
+    padding: 0.5vmin;
+}
+
+.bar_outer {
+    background-color: #212127;
+    border: #56575b;
+    padding: 0.5vmin;
+    border-radius: 5px;
+}
+
+.bar_inner {
+    width: 0;
+    height: 5vh;
+    transition: all 1s ease;
+    background-color: #2f66db;
+    border-radius: 5px;
+}
+
+
+/* calendar */
+
+.calendar {
+    padding: 0.5vmin;
+}
+
+.calendar_inner {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.day {
+    background-color: #212127;
+    border: 2px solid transparent;
+    transition: all 0.15s linear;
+    border-radius: 10px;
+    padding: 1.5vmin;
+}
+
+.busy_day {
+    background-color: #2f66db;
+}
+
+.day.active {
+    border: 2px solid #f97348;
+    color: #f97348;
+}
+
+
+/* tasks */
+
+.tasks {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1vh 0;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    background-color: #222228;
+    width: 90%;
+    border-radius: 50px;
+    margin: 1vh 0;
+    padding: 2vh 1vh;
+}
+
+.task_label {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #56575b;
+    transition: all 0.1s linear;
+    border-radius: 50%;
+    padding: 0.5vmin;
+    margin: 0 2vh;
+}
+
+.task_checkbox {
+    width: 10%;
+    display: none;
+}
+
+.task_info {
+    margin: 0;
+    width: 70%;
+}
+
+.task_date {
+    margin: 0;
+    width: 20%;
+}
+
+.invisible {
+    display: none;
+}
+
+.change_input {
+    padding: 0.5vh 0.5vw;
+    border-radius: 25px;
+    transition: all 0.1s linear;
+    border: 2px solid transparent;
+}
+
+input.change_input:focus {
+    outline: none;
+    border: 2px solid #f97348;
+}
+
+
+/* group2 */
+
+.group2 {
+    margin-bottom: 2%;
+}
+
+
+/* add */
+
+.add {
+    display: flex;
+    justify-content: center;
+    transition: all 2s ease-in-out;
+    /* align-items: center; */
+}
+
+#addToggle {
+    display: none;
+}
+
+.add_menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 45px;
+    border-radius: 25px;
+    transition: all 1s linear, background-color 0.1s linear;
+    background-color: #56575b;
+}
+
+#addToggle:checked~.add_menu {
+    width: 80%;
+    height: 50px;
+    border-radius: 25px;
+    /* background-color: #56575b; */
+}
+
+.add_tasks {
+    display: flex;
+    justify-content: center;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.5s linear;
+}
+
+#addToggle:checked~.add_menu>.add_tasks {
+    width: 100%;
+    height: 100%;
+    padding: 1vmin 0;
+    height: unset;
+}
+
+#toAdd {
+    border-radius: 100%;
+    width: 50px;
+    height: 45px;
+    border-radius: 25px;
+    margin: 0 5px;
+    background-color: #26d0a9;
+    border: 0;
+}
+
+#addTask {
+    width: 70%;
+    height: 45px;
+    font-size: 18px;
+    padding: 0 3vmin;
+    border-radius: 25px;
+    margin: 0 5px;
+}
+
+#addTask:focus,
+#addDate:focus,
+#toAdd:focus {
+    outline: none
+}
+
+#addDate {
+    width: 20%;
+    height: 45px;
+    font-size: 18px;
+    padding: 0 3vmin;
+    border-radius: 25px;
+    margin: 0 5px;
+}
+
+.barry {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #2f67dc;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+}
+
+#addToggle:checked~.add_menu>.barry {
+    margin-right: 2vw;
+    height: 45px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    margin: 2px 0;
+    height: 4px;
+    background-color: white;
+    border-radius: 30%;
+    transition: opacity .3s linear, transform .5s ease-in-out;
+}
+
+.bar:first-child {
+    transform: rotate(90deg) translate(5px, 0px);
+}
+
+.bar:last-child {
+    transform: rotate(180deg) translate(0px, 3px)
+}
+
+#addToggle:checked~.add_menu>.barry>.bar:first-child {
+    transform: rotate(45deg) translate(4px, 3px);
+}
+
+#addToggle:checked~.add_menu>.barry>.bar:last-child {
+    transform: rotate(-45deg) translate(2.5px, -2px);
+}
+
+@media(max-width:700px) {
+    #addToggle:checked~.add_menu {
+        width: 100%;
+    }
+    #toAdd,
+    #addTask,
+    #addDate {
+        font-size: 10px;
+    }
+}
