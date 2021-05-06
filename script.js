@@ -21,7 +21,7 @@ $(document).ready(function() {
             $('.task').last().append("<div class='task_date'></div>");
             $('.task_date').last().text(convertDate($('#addDate').val()));
             currentTasksArr.push($('.task'));
-            setInterval(()=> $('#toAdd').toggleClass('is_active'), 2000)
+            setTimeout(()=> $('#toAdd').toggleClass('is_active'), 2000)
 
             $('.task_info').last().dblclick(function() {
                 let elem = $(this);
