@@ -111,6 +111,13 @@ body {
 .task_info {
     margin: 0;
     width: 70%;
+    transition: all 0.1s linear;
+    cursor: pointer;
+}
+
+.task_info:hover{
+    text-decoration: dashed 1px white;
+    opacity: 0.8;
 }
 
 .task_date {
@@ -162,12 +169,12 @@ input.change_input:focus {
     width: 50px;
     height: 45px;
     border-radius: 25px;
-    transition: all 1s linear, background-color 0.1s linear;
+    transition: all 1.5s linear, background-color 0.1s linear;
     background-color: #56575b;
 }
 
 #addToggle:checked~.add_menu {
-    width: 80%;
+    width: 100%;
     height: 50px;
     border-radius: 25px;
     /* background-color: #56575b; */
@@ -189,19 +196,88 @@ input.change_input:focus {
     padding: 1vmin 0;
     height: unset;
 }
-
+.button_wrapper{
+    position: relative;
+    width: 10%;
+  /* height: 100%; */
+}
 #toAdd {
-    border-radius: 100%;
-    width: 50px;
-    height: 45px;
-    border-radius: 25px;
-    margin: 0 5px;
-    background-color: #26d0a9;
-    border: 0;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 100px;
+  height: 40px;
+  line-height: 1;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 3px solid #8C82FC;
+  background: #fff;
+  color: #8C82FC;
+  border-radius: 40px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all .35s;
 }
 
+#toAdd:hover{
+    background: #8C82FC;
+  color: #fff;
+}
+
+#toAdd span{
+    opacity: 1;
+  visibility: visible;
+  transition: all .35s;
+}
+
+.success{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .35s;
+  }
+  
+  .success svg{
+    width: 20px;
+    height: 20px;
+    fill: yellowgreen;
+    transform-origin: 50% 50%;
+    transform: translateY(-50%) rotate(0deg) scale(0);
+    transition: all .35s;
+  }
+  
+  #toAdd.is_active{
+    width: 40px;
+    height: 40px;
+  }
+  
+  #toAdd.is_active .success{
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  #toAdd.is_active .success svg{
+    margin-top: 50%;
+    transform: translateY(-50%) rotate(720deg) scale(1);
+  }
+  
+  #toAdd.is_active span{
+    opacity: 0;
+    visibility: hidden;
+  }
+
 #addTask {
-    width: 70%;
+    width: 45%;
     height: 45px;
     font-size: 18px;
     padding: 0 3vmin;
@@ -216,7 +292,7 @@ input.change_input:focus {
 }
 
 #addDate {
-    width: 20%;
+    width: 45%;
     height: 45px;
     font-size: 18px;
     padding: 0 3vmin;
@@ -249,7 +325,7 @@ input.change_input:focus {
     height: 4px;
     background-color: white;
     border-radius: 30%;
-    transition: opacity .3s linear, transform .5s ease-in-out;
+    transition: opacity .5s linear, transform .5s ease-in-out;
 }
 
 .bar:first-child {
@@ -268,13 +344,45 @@ input.change_input:focus {
     transform: rotate(-45deg) translate(2.5px, -2px);
 }
 
-@media(max-width:700px) {
+@media(max-width:800px) {
+    
+    .add_tasks{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    
+    
     #addToggle:checked~.add_menu {
         width: 100%;
+        height: 100%;
     }
+
     #toAdd,
-    #addTask,
-    #addDate {
-        font-size: 10px;
+    #addTask {
+        font-size: 12px;
+       
+        padding: 1vh ;
+        width: 90%;
+        margin: 1vh 1vw;
     }
+    #addDate{
+        margin-bottom: 6vh;
+        font-size: 12px;
+        padding: 1vh ;
+        width: 90%;
+    }
+
+    #toAdd{
+        margin: 0;
+        top: unset;
+        bottom: 0;
+    }
+
+    .button_wrapper{
+        width: 90%;
+        position:static;
+    }
+    
 }

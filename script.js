@@ -8,19 +8,20 @@ $(document).ready(function() {
     let currentTasksArr = [];
 
     $('#toAdd').click(function() {
-
+        
         if ($('#addTask').val() != 0 && $('#addDate').val() != 0) {
             // create a new task card
+            $('#toAdd').toggleClass('is_active')
             $('.tasks').append('<div class="task"></div>');
             $('.task').last().append("<label class='task_label'></label>");
             $('.task_label').last().append("<input class='task_checkbox'>");
             $('.task_checkbox').last().attr('type', 'checkbox');
-            $('.task').last().append("<p class='task_info'></p>");
+            $('.task').last().append("<p title='double click to change!' class='task_info'></p>");
             $('.task_info').last().text($('#addTask').val());
             $('.task').last().append("<div class='task_date'></div>");
             $('.task_date').last().text(convertDate($('#addDate').val()));
             currentTasksArr.push($('.task'));
-
+            setInterval(()=> $('#toAdd').toggleClass('is_active'), 2000)
 
             $('.task_info').last().dblclick(function() {
                 let elem = $(this);
@@ -90,7 +91,7 @@ $(document).ready(function() {
             alert('enter the data!')
         }
 
-
+       
     })
 
     // Bar chart
