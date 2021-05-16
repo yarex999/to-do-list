@@ -192,7 +192,7 @@ $(document).ready(function() {
                 $('.task').last().attr('data-day', 'day7');
                 break;
             default:
-                return Error('date!')
+                return convertDate(prompt('your date is wrong, enter a new one'));
         }
         console.log(finalDate);
         return finalDate;
