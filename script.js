@@ -116,11 +116,7 @@ $(document).ready(function() {
     }
     // ------------------------------------------
 
-    function handler(){
-
-    }
-    let proxyBusyDays = new Proxy(busyDays, handler);
-console.log(proxyBusyDays)
+  
 
     // filterig tasks by day
     $('.day').click(function() {
