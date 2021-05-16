@@ -46,6 +46,7 @@ $(document).ready(function() {
             })
 
             
+            
             // add a function to a checkbox
             $('.task_checkbox').last().click(function() {
                 setTimeout(() => {
