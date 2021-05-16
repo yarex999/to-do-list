@@ -147,7 +147,7 @@ console.log(proxyBusyDays)
     // converting data into a proper format
     function convertDate(date) {
         let finalDate;
-        let checkingDate = date.toLowerCase();
+        let checkingDate = date.toLowerCase().trim();
         console.log(checkingDate);
 
         switch (checkingDate) {
@@ -202,7 +202,7 @@ console.log(proxyBusyDays)
                 $('.task').last().attr('data-day', 'day7');
                 break;
             default:
-                return Error('wrong date!')
+                return alert('can`t find this day')
         }
         console.log(finalDate);
         return finalDate;
