@@ -116,11 +116,6 @@ $(document).ready(function() {
     }
     // ------------------------------------------
 
-    function handler(){
-
-    }
-    let proxyBusyDays = new Proxy(busyDays, handler);
-console.log(proxyBusyDays)
 
     // filterig tasks by day
     $('.day').click(function() {
@@ -147,7 +142,7 @@ console.log(proxyBusyDays)
     // converting data into a proper format
     function convertDate(date) {
         let finalDate;
-        let checkingDate = date.toLowerCase();
+        let checkingDate = date.toLowerCase().trim();
         console.log(checkingDate);
 
         switch (checkingDate) {
