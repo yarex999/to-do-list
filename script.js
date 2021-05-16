@@ -219,8 +219,7 @@ $(document).ready(function() {
                 $(elem1).appendTo($('.tasks'))
             }
         }));
-        console.log(arr);
-        console.log(busyDays)
+        
     }
     // ------------------------------------------
 
