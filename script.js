@@ -45,11 +45,7 @@ $(document).ready(function() {
 
             })
 
-<<<<<<< HEAD
             
-            
-=======
->>>>>>> parent of 064dd57 (changes in a script)
             // add a function to a checkbox
             $('.task_checkbox').last().click(function() {
                 setTimeout(() => {
@@ -73,18 +69,17 @@ $(document).ready(function() {
                 let deleteIndex = busyDays.indexOf(deleteDate.text());
                 console.log(deleteIndex)
                 busyDays.splice(deleteIndex, 1);
+                
 
             })
 
 
             // converting date
             let taskDate = $('#addDate').val();
-            if (taskDate == 'Mon' || taskDate == "Tue" || taskDate == "Wed" || taskDate == "Thu" || taskDate == 'Fri' || taskDate == "Sat" || taskDate == "Sun") {
-                busyDays.push(covertedDate);
-            } else {
+           
                 let covertedDate = convertDate(taskDate);
                 busyDays.push(covertedDate);
-            }
+            
 
             $('#addTask').val('');
             $('#addDate').val('');
@@ -95,7 +90,7 @@ $(document).ready(function() {
         } else {
             alert('enter the data!')
         }
-
+        
        
     })
 
@@ -114,25 +109,31 @@ $(document).ready(function() {
                 $(elem).addClass('busy_day');
             } else {
                 $(elem).removeClass('busy_day');
+                $(elem).removeClass('active');
+                $('.task').show();
             }
         })
     }
     // ------------------------------------------
 
-<<<<<<< HEAD
-  
-=======
->>>>>>> parent of 064dd57 (changes in a script)
+    function handler(){
+
+    }
+    let proxyBusyDays = new Proxy(busyDays, handler);
+console.log(proxyBusyDays)
 
     // filterig tasks by day
     $('.day').click(function() {
-        $(this).toggleClass('active');
+        if(busyDays.length > 0 && $(this).hasClass('busy_day')){
+         $(this).toggleClass('active');
         if ($(this).hasClass('active')) {
             $('.day').not($(this)).removeClass('active');
             chooseTasks($(this))
         } else {
             $('.task').show()
+        }   
         }
+        
     })
 
     // open filtered tasks by day
@@ -146,7 +147,7 @@ $(document).ready(function() {
     // converting data into a proper format
     function convertDate(date) {
         let finalDate;
-        let checkingDate = date.toLowerCase().trim();
+        let checkingDate = date.toLowerCase();
         console.log(checkingDate);
 
         switch (checkingDate) {
@@ -201,7 +202,7 @@ $(document).ready(function() {
                 $('.task').last().attr('data-day', 'day7');
                 break;
             default:
-                return alert('can`t find this day')
+                return Error('date!')
         }
         console.log(finalDate);
         return finalDate;
@@ -221,7 +222,8 @@ $(document).ready(function() {
                 $(elem1).appendTo($('.tasks'))
             }
         }));
-        
+        console.log(arr);
+        console.log(busyDays)
     }
     // ------------------------------------------
 
