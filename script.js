@@ -45,7 +45,6 @@ $(document).ready(function() {
 
             })
 
-            
             // add a function to a checkbox
             $('.task_checkbox').last().click(function() {
                 setTimeout(() => {
@@ -69,17 +68,18 @@ $(document).ready(function() {
                 let deleteIndex = busyDays.indexOf(deleteDate.text());
                 console.log(deleteIndex)
                 busyDays.splice(deleteIndex, 1);
-                
 
             })
 
 
             // converting date
             let taskDate = $('#addDate').val();
-           
+            if (taskDate == 'Mon' || taskDate == "Tue" || taskDate == "Wed" || taskDate == "Thu" || taskDate == 'Fri' || taskDate == "Sat" || taskDate == "Sun") {
+                busyDays.push(covertedDate);
+            } else {
                 let covertedDate = convertDate(taskDate);
                 busyDays.push(covertedDate);
-            
+            }
 
             $('#addTask').val('');
             $('#addDate').val('');
@@ -90,7 +90,7 @@ $(document).ready(function() {
         } else {
             alert('enter the data!')
         }
-        
+
        
     })
 
@@ -109,8 +109,6 @@ $(document).ready(function() {
                 $(elem).addClass('busy_day');
             } else {
                 $(elem).removeClass('busy_day');
-                $(elem).removeClass('active');
-                $('.task').show();
             }
         })
     }
@@ -119,16 +117,13 @@ $(document).ready(function() {
 
     // filterig tasks by day
     $('.day').click(function() {
-        if(busyDays.length > 0 && $(this).hasClass('busy_day')){
-         $(this).toggleClass('active');
+        $(this).toggleClass('active');
         if ($(this).hasClass('active')) {
             $('.day').not($(this)).removeClass('active');
             chooseTasks($(this))
         } else {
             $('.task').show()
-        }   
         }
-        
     })
 
     // open filtered tasks by day
